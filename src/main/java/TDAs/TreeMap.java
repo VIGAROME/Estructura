@@ -11,7 +11,7 @@ import java.util.LinkedList;
  *
  * @author garci
  */
-public class TreeMap {
+public class TreeMap implements Comparable<TreeMap>{
     private NodeTreeMap root;
     
     public boolean  isFile(){
@@ -64,6 +64,30 @@ public class TreeMap {
     public double getWeight(){
         return getRoot().getWeight();
     }
+
+    @Override
+    public int compareTo(TreeMap o) {
+        
+        return this.root.compareTo(o.getRoot());
+    }
     
-    
+    public int countLevel(TreeMap mp){
+        int cont=1;
+        if(this.isDirectory()){
+            for(TreeMap tm: this.getChildren()){
+                if(tm.isFile()){
+                    if(tm.compareTo(mp)==0)
+                        return cont;
+                }else{
+                    cont+= tm.countLevel(mp);
+                }
+            }
+        }else{
+            if(this.compareTo(mp)==0){
+                return cont;
+            }
+        }
+        return 0;
+        
+    }
 }

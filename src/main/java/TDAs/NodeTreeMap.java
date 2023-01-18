@@ -7,12 +7,13 @@ package TDAs;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  *
  * @author garci
  */
-public class NodeTreeMap {
+public class NodeTreeMap implements Comparable<NodeTreeMap> {
     private LinkedList<TreeMap> children;
     private File file;
     private String path;
@@ -70,13 +71,7 @@ public class NodeTreeMap {
         this.children = children;
     }
 
-    public String getContenido() {
-        return path;
-    }
-
-    public void setContenido(String path) {
-        this.path = path;
-    }
+    
 
     
     
@@ -105,6 +100,31 @@ public class NodeTreeMap {
         return true;
         }
         return false;
+    }
+
+    @Override
+    public int compareTo(NodeTreeMap o) {
+        int var = -1;
+        if(this.getName()==o.getName() && this.getPath()==o.getPath() && this.getWeight()==o.getWeight() ){
+            var=0;
+            if(this.getFile().isDirectory()){
+                Stack<TreeMap> s1 = new Stack<>();
+                Stack<TreeMap> s2 = new Stack<>();
+                for(TreeMap mp:this.children){
+                    s1.push(mp);
+                }
+                for(TreeMap mp:o.children){
+                    s2.push(mp);
+                }
+                while(!s1.isEmpty()){
+                    if(s1.pop().compareTo(s2.pop())!=0){
+                        return -1;
+                    }
+                }
+            }
+        }
+        
+        return var;
     }
     
     

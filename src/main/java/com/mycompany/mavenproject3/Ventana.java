@@ -6,6 +6,7 @@ package com.mycompany.mavenproject3;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +22,9 @@ public class Ventana extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         UnitComponet();
     }
-    
+    public void addPanel(JPanel jP){
+        this.getContentPane().add(jP);
+    }
     private void UnitComponet(){
         int wigth=900;
         int height=800;
@@ -31,7 +34,7 @@ public class Ventana extends JFrame{
         JPanel jp1= crearPanel(wigth,(int)(height*(150/800)),"Archivo1",150.00);
         jp1.setBackground(Color.BLUE);
         jp1.setLocation(100, 40);
-        jP.add(jp1,BorderLayout.CENTER,1);
+        jP.add(jp1,BorderLayout.AFTER_LAST_LINE,1);
         //
         JPanel jp2= crearPanel(wigth,(int)(height*(150/800)),"Archivo2",150.00);
         jP.add(jp2, BorderLayout.CENTER );
@@ -48,14 +51,33 @@ public class Ventana extends JFrame{
     }
     
     private JPanel crearPanel(int wigth, int height,String nameFile,double weight){
-        JPanel jp= new JPanel();
-        jp.setLayout(null);
-        jp.setBackground(Color.red);
-        jp.setBounds(0,0,wigth, height);
         JLabel lbl_nameFile = new JLabel(nameFile);
         lbl_nameFile.setBounds(0,0,120, 30);
         JLabel lbl_weight_File = new JLabel(Double.toString(weight)+"MB");
-        lbl_weight_File.setBounds(wigth-65,0,50,30);
+        lbl_weight_File.setBounds((int)weight-30,0,50,30);
+        
+        
+        JPanel jp= new JPanel();
+        jp.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        GroupLayout gl_jp=new GroupLayout(jp);
+        jp.setLayout(gl_jp);
+        jp.setBackground(Color.red);
+        /*gl_jp.setHorizontalGroup(
+            gl_jp.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(gl_jp.createSequentialGroup()
+                .addComponent(lbl_nameFile, javax.swing.GroupLayout.DEFAULT_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_weight_File))
+        );
+        
+        gl_jp.setVerticalGroup(
+            gl_jp.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(lbl_nameFile,javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(lbl_weight_File)
+        );
+        */
+        jp.setBounds(0,0,wigth, height);
+        
         jp.add(lbl_nameFile);
         jp.add(lbl_weight_File);
         return jp;

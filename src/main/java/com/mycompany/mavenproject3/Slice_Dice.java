@@ -7,7 +7,9 @@ package com.mycompany.mavenproject3;
 
 import TDAs.TreeMap;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.io.IOException;
+import java.util.Stack;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,18 +33,12 @@ public class Slice_Dice extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Slice_Dice(Buscador find) throws IOException{
+    public Slice_Dice(Buscador find) {
         //this();
         this.find=find;
         this.map=find.getT();
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        Scene scene = new Scene(root);
-        stage = new Stage(StageStyle.DECORATED);
-        stage.setScene(scene);
-        stage.show();
-        
-        crearPanel(500, 660, "Directorio Principal", 800.00);
+        initComponents(particiones(map,500,660,true));
+        //initComponents(crearPanel(500, 660, "Directorio Principal", 800.00));
         
     }
 
@@ -63,32 +59,70 @@ public class Slice_Dice extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jFrame2 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         lbl_nameFile = new javax.swing.JLabel();
         lbl_weight_File = new javax.swing.JLabel();
-        jP2 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_nameFile1 = new javax.swing.JLabel();
+        lbl_weight_File1 = new javax.swing.JLabel();
         jlb_SC = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
 
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 51, 102));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         lbl_nameFile.setText("Nombre_Archivo");
 
         lbl_weight_File.setText("Tamnio_Archivo");
 
-        jP2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        javax.swing.GroupLayout jP2Layout = new javax.swing.GroupLayout(jP2);
-        jP2.setLayout(jP2Layout);
-        jP2Layout.setHorizontalGroup(
-            jP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+        lbl_nameFile1.setText("Nombre_Archivo");
+
+        lbl_weight_File1.setText("Tamnio_Archivo");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lbl_nameFile1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_weight_File1))
         );
-        jP2Layout.setVerticalGroup(
-            jP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_nameFile1)
+                    .addComponent(lbl_weight_File1))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -96,12 +130,12 @@ public class Slice_Dice extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lbl_nameFile, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addComponent(lbl_nameFile, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_weight_File))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 205, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,8 +143,9 @@ public class Slice_Dice extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nameFile)
                     .addComponent(lbl_weight_File))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jlb_SC.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -137,7 +172,7 @@ public class Slice_Dice extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,8 +182,8 @@ public class Slice_Dice extends javax.swing.JFrame {
                     .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_regresar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,10 +192,9 @@ public class Slice_Dice extends javax.swing.JFrame {
     
     private void initComponents( javax.swing.JPanel jPanel1) {
 
-        
+        /*
         lbl_nameFile = new javax.swing.JLabel();
         lbl_weight_File = new javax.swing.JLabel();
-        jP2 = new javax.swing.JPanel();
         jlb_SC = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
 
@@ -205,7 +239,12 @@ public class Slice_Dice extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
+        */
+        Ventana v1 = new Ventana();
+        
+        v1.setLocationRelativeTo(null);
+        v1.addPanel(jPanel1);
+        v1.setVisible(true);
         pack();
     }// </editor-fold>                        
 
@@ -250,7 +289,60 @@ public class Slice_Dice extends javax.swing.JFrame {
             }
         });
     }
-    public javax.swing.JPanel parciones(TreeMap map, int V, int H){
+    public JPanel particiones(TreeMap map, int width,int height, boolean isVertical ){
+        if(map!=null){
+            JPanel jPrincipal = crearJPanel(height, width, map.getRoot().getName(), map.getWeight());
+            if(map.isDirectory()){
+                // boolean isVertical=true; por defecto is true
+                Stack<TreeMap> s = new Stack<>();
+                int Num_Children = map.getChildren().size();
+                double tamnio_totalMb= map.getWeight();
+                for(TreeMap tm: map.getChildren()){
+                    s.push(tm);
+                }
+                int punteroV=0;
+                int punteroH=40;
+                while (!s.isEmpty()) {
+                    JPanel jsub=null;
+                    TreeMap tm2=s.pop();
+                    double porc_taminio= tm2.getWeight()/tamnio_totalMb;
+                    if (tm2.isFile()){
+                        if(isVertical){
+                            jsub=crearJPanel(height,(int)(width*porc_taminio),tm2.getRoot().getName(),tm2.getWeight());
+                            jsub.setLocation(punteroV, 40);
+                            punteroV+=(int)(width*porc_taminio);
+                        }else{
+                            jsub=crearJPanel((int)(height*porc_taminio),width,tm2.getRoot().getName(),tm2.getWeight());
+                            jsub.setLocation(0, punteroH);
+                            punteroH+=(int)(height*porc_taminio);
+                        }
+                        
+                    }else{
+                        if(isVertical){
+                            jsub=particiones(tm2, (int)(width*porc_taminio), height, !isVertical);
+                        }else{
+                            jsub=particiones(tm2, width, (int)(height*porc_taminio), !isVertical);
+                        }
+                        
+                    }
+                    jPrincipal.add(jsub);
+                    
+                }
+            }
+            
+            
+            return jPrincipal;
+        }
+        
+        return null;
+        
+        
+        
+    }
+    
+    
+    
+    /*public javax.swing.JPanel parciones(TreeMap map, int V, int H){
         
         if(map!=null){
             javax.swing.JPanel jPanel1= this.crear_Panel(V, H,map.getRoot().getName(), map.getWeight());
@@ -266,6 +358,7 @@ public class Slice_Dice extends javax.swing.JFrame {
                         System.out.println(tm.getRoot().getName());
                         double porc_taminio= tm.getWeight()/tamnio_totalMb;
                         
+                        JP_sb= this.parciones(tm,V, (int)(H*porc_taminio));
                         //cortes Verticales
                         if(cont%2==0){
                             JP_sb= this.parciones(tm,V, (int)(H*porc_taminio));
@@ -298,8 +391,23 @@ public class Slice_Dice extends javax.swing.JFrame {
         
         return null;
  
+    }*/
+    
+    private JPanel crearJPanel(int height, int width, String nameFile, double weight){
+        JPanel jp = new JPanel();
+        jp.setBackground(Color.red);
+        jp.setSize(width, height);
+        jp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
+        JLabel lbl_nameFile= new JLabel(nameFile);
+        lbl_nameFile.setBounds(0,0,120, 30);
+        JLabel lbl_weightFile= new JLabel(Double.toString(weight)+" MB");
+        lbl_weightFile.setBounds((int)weight-30,0,50,30);
+        jp.add(lbl_nameFile, 0);
+        jp.add(lbl_weightFile,1);
+        return jp;
     }
     
+    /*
     private javax.swing.JPanel crear_Panel(int V, int H, String nameFile, Double weight){
         javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
         
@@ -341,9 +449,8 @@ public class Slice_Dice extends javax.swing.JFrame {
             .addGap(0, V, Short.MAX_VALUE)
         );
         return jPanel1;
-    }
-    
-    
+    }*/
+    /*
     private JPanel crearPanel(int V, int H, String nameFile, Double weight){
         JPanel jp= new JPanel();
         jp.setLayout(null);
@@ -379,14 +486,18 @@ public class Slice_Dice extends javax.swing.JFrame {
         jp.add(lbl_weight_File,BorderLayout.NORTH,-1);
      return jp;   
     }
-    
+    */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;
-    private javax.swing.JPanel jP2;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlb_SC;
     private javax.swing.JLabel lbl_nameFile;
+    private javax.swing.JLabel lbl_nameFile1;
     private javax.swing.JLabel lbl_weight_File;
+    private javax.swing.JLabel lbl_weight_File1;
     // End of variables declaration//GEN-END:variables
 
 }

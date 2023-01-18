@@ -20,7 +20,9 @@ public class App extends Application {
         
         scene = new Scene(loadFXML("secondary"), 640, 480);
         stage.setScene(scene);
-        stage.show();
+        //stage.show();
+        Buscador find = new Buscador();
+        find.setVisible(true);
         
     }
 

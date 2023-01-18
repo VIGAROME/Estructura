@@ -15,15 +15,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
  * @author garci
  */
 public class Slice_Dice extends javax.swing.JFrame {
-    private Buscador find ;
+    
     private TreeMap map;
     
     
@@ -33,22 +35,15 @@ public class Slice_Dice extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Slice_Dice(Buscador find) {
+    public Slice_Dice(TreeMap map) {
         //this();
-        this.find=find;
-        this.map=find.getT();
+        this.map=map;
         initComponents(particiones(map,500,660,true));
         //initComponents(crearPanel(500, 660, "Directorio Principal", 800.00));
         
     }
 
-    public Buscador getFind() {
-        return find;
-    }
-
-    public void setFind(Buscador find) {
-        this.find = find;
-    }
+    
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -61,12 +56,6 @@ public class Slice_Dice extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jFrame2 = new javax.swing.JFrame();
-        jPanel1 = new javax.swing.JPanel();
-        lbl_nameFile = new javax.swing.JLabel();
-        lbl_weight_File = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        lbl_nameFile1 = new javax.swing.JLabel();
-        lbl_weight_File1 = new javax.swing.JLabel();
         jlb_SC = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
 
@@ -94,60 +83,6 @@ public class Slice_Dice extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 51, 102));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-        lbl_nameFile.setText("Nombre_Archivo");
-
-        lbl_weight_File.setText("Tamnio_Archivo");
-
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-        lbl_nameFile1.setText("Nombre_Archivo");
-
-        lbl_weight_File1.setText("Tamnio_Archivo");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lbl_nameFile1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_weight_File1))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nameFile1)
-                    .addComponent(lbl_weight_File1))
-                .addContainerGap(370, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lbl_nameFile, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_weight_File))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 205, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nameFile)
-                    .addComponent(lbl_weight_File))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-
         jlb_SC.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jlb_SC.setText("Slice&Dice");
 
@@ -163,16 +98,11 @@ public class Slice_Dice extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_regresar)
-                        .addGap(273, 273, 273)
-                        .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btn_regresar)
+                .addGap(147, 147, 147)
+                .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,9 +111,7 @@ public class Slice_Dice extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_regresar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(533, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,60 +120,13 @@ public class Slice_Dice extends javax.swing.JFrame {
     
     private void initComponents( javax.swing.JPanel jPanel1) {
 
-        /*
-        lbl_nameFile = new javax.swing.JLabel();
-        lbl_weight_File = new javax.swing.JLabel();
-        jlb_SC = new javax.swing.JLabel();
-        btn_regresar = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         
-
-        jlb_SC.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jlb_SC.setText("Slice&Dice");
-
-        btn_regresar.setText("Regresar");
-        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_regresarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_regresar)
-                        .addGap(273, 273, 273)
-                        .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(86, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_regresar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        */
         Ventana v1 = new Ventana();
         
         v1.setLocationRelativeTo(null);
         v1.addPanel(jPanel1);
         v1.setVisible(true);
-        pack();
+        //pack();
     }// </editor-fold>                        
 
     
@@ -291,7 +172,7 @@ public class Slice_Dice extends javax.swing.JFrame {
     }
     public JPanel particiones(TreeMap map, int width,int height, boolean isVertical ){
         if(map!=null){
-            JPanel jPrincipal = crearJPanel(height, width, map.getRoot().getName(), map.getWeight());
+            JPanel jPrincipal = crearJPanel(height, width, map);
             if(map.isDirectory()){
                 // boolean isVertical=true; por defecto is true
                 Stack<TreeMap> s = new Stack<>();
@@ -307,25 +188,22 @@ public class Slice_Dice extends javax.swing.JFrame {
                     TreeMap tm2=s.pop();
                     double porc_taminio= tm2.getWeight()/tamnio_totalMb;
                     if (tm2.isFile()){
-                        if(isVertical){
-                            jsub=crearJPanel(height,(int)(width*porc_taminio),tm2.getRoot().getName(),tm2.getWeight());
-                            jsub.setLocation(punteroV, 40);
-                            punteroV+=(int)(width*porc_taminio);
-                        }else{
-                            jsub=crearJPanel((int)(height*porc_taminio),width,tm2.getRoot().getName(),tm2.getWeight());
-                            jsub.setLocation(0, punteroH);
-                            punteroH+=(int)(height*porc_taminio);
-                        }
+                        JTextArea txtArchivo= crearJTextArea(height,(int)(width*porc_taminio), tm2);
+                        txtArchivo.setLocation(punteroV, 40);
+                        punteroV+=(int)(width*porc_taminio);
+                        jPrincipal.add(txtArchivo);
                         
                     }else{
-                        if(isVertical){
-                            jsub=particiones(tm2, (int)(width*porc_taminio), height, !isVertical);
-                        }else{
-                            jsub=particiones(tm2, width, (int)(height*porc_taminio), !isVertical);
-                        }
+                        JButton b =crearJButton(height, (int)(width*porc_taminio), tm2);
+                        jPrincipal.add(b);
+                        b.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btn_selectActionPerformed(evt,tm2);
+                            }
+                        });
                         
                     }
-                    jPrincipal.add(jsub);
+                    
                     
                 }
             }
@@ -335,63 +213,50 @@ public class Slice_Dice extends javax.swing.JFrame {
         }
         
         return null;
-        
-        
-        
     }
     
-    
-    
-    /*public javax.swing.JPanel parciones(TreeMap map, int V, int H){
-        
-        if(map!=null){
-            javax.swing.JPanel jPanel1= this.crear_Panel(V, H,map.getRoot().getName(), map.getWeight());
-            if(map.isDirectory()){
-               if(map.getChildren() !=null){
-                    int n_Children = map.getChildren().size();
-                    System.out.println("N_Children "+n_Children);
-                    double tamnio_totalMb= map.getWeight();
-                    int cont =1;
-                    for (TreeMap tm: map.getChildren()){
-                        
-                        javax.swing.JPanel JP_sb;
-                        System.out.println(tm.getRoot().getName());
-                        double porc_taminio= tm.getWeight()/tamnio_totalMb;
-                        
-                        JP_sb= this.parciones(tm,V, (int)(H*porc_taminio));
-                        //cortes Verticales
-                        if(cont%2==0){
-                            JP_sb= this.parciones(tm,V, (int)(H*porc_taminio));
-                        }else{//cortes Horizontales
-                            JP_sb= this.parciones(tm,(int)(V*porc_taminio), H);
-                        }
-                        
-                        
-                        javax.swing.GroupLayout jP_sbLayout = new javax.swing.GroupLayout(JP_sb);
-                        JP_sb.setLayout(jP_sbLayout);
-                        jP_sbLayout.setHorizontalGroup(
-                            jP_sbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGap(0, 348, Short.MAX_VALUE)
-                        );
-                        jP_sbLayout.setVerticalGroup(
-                            jP_sbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGap(0, 487, Short.MAX_VALUE)
-                        );
-                    }
-                }else{
-                    System.out.println("Lanzar exception por hijos de mapa");
-                } 
+    private void btn_selectActionPerformed(java.awt.event.ActionEvent evt,TreeMap map) {
+        Slice_Dice sc = new Slice_Dice(map);
+    }                                           
+
+    private JTextArea crearJTextArea(int height, int width,TreeMap tm){
+        JTextArea txt_Area=new JTextArea();
+        txt_Area.setColumns(20);
+        txt_Area.setRows(5);
+        txt_Area.setBackground(Color.LIGHT_GRAY);
+        txt_Area.setText(tm.getRoot().getName()+'\n'+tm.getRoot().getWeightString());
+        txt_Area.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtA_ArchivoMouseClicked(evt);
             }
+        });
+        //txt_Area.setBounds(0, 0, width, height);
+        return txt_Area;
+    }
+    private JButton crearJButton(int height, int width,TreeMap tm){
+        JButton b= new JButton();
+        b.setBackground(Color.BLUE);
+        b.setText(tm.getRoot().getName()+"->"+tm.getRoot().getWeightString());
+        //b.setBounds(0, 0, width, height);
         
+        
+        return b;
+    }
             
-        return jPanel1;    
-        }else{
-            System.out.println("Lanzar exception por map");
-        }
-        
-        return null;
- 
-    }*/
+    
+    private JPanel crearJPanel(int height, int width,TreeMap tm){
+        JPanel jp = new JPanel();
+        jp.setBackground(Color.red);
+        jp.setSize(width, height);
+        jp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
+        JLabel lbl_nameFile= new JLabel(tm.getRoot().getName());
+        lbl_nameFile.setBounds(0,0,120, 30);
+        JLabel lbl_weightFile= new JLabel(tm.getRoot().getWeightString());
+        lbl_weightFile.setBounds((int)tm.getWeight()-30,0,50,30);
+        jp.add(lbl_nameFile, 0);
+        jp.add(lbl_weightFile,1);
+        return jp;
+    }
     
     private JPanel crearJPanel(int height, int width, String nameFile, double weight){
         JPanel jp = new JPanel();
@@ -407,97 +272,16 @@ public class Slice_Dice extends javax.swing.JFrame {
         return jp;
     }
     
-    /*
-    private javax.swing.JPanel crear_Panel(int V, int H, String nameFile, Double weight){
-        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
-        
-        //crea los label de nombre de archivo y tamanio 
-        javax.swing.JLabel lbl_nameFile = new javax.swing.JLabel();
-        lbl_nameFile.setText(nameFile);
-        javax.swing.JLabel lbl_weight_File = new javax.swing.JLabel();
-        lbl_weight_File.setText(Double.toString(weight));
-        
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-
-        //add los label al Jpanel
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lbl_nameFile, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
-                .addComponent(lbl_weight_File))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nameFile)
-                    .addComponent(lbl_weight_File))
-                .addGap(0, 485, Short.MAX_VALUE))
-        );
-        //
-        
-        
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, H, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, V, Short.MAX_VALUE)
-        );
-        return jPanel1;
-    }*/
-    /*
-    private JPanel crearPanel(int V, int H, String nameFile, Double weight){
-        JPanel jp= new JPanel();
-        jp.setLayout(null);
-        jp.setBounds(100,200,H, V);
-        jp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
-        JLabel lbl_nameFile = new JLabel(nameFile);
-        JLabel lbl_weight_File = new JLabel(Double.toString(weight)+"MB");
-        jp.add(lbl_nameFile,BorderLayout.NORTH,0);
-        jp.add(lbl_weight_File,BorderLayout.NORTH,-1);
-        JPanel jp1= crearPanel1(V,(int)(H*(150/800)),"Archivo1",150.00);
-        JPanel jp2= crearPanel1(V,(int)(H*(150/800)),"Archivo2",150.00);
-        JPanel jp3= crearPanel1(V,(int)(H*(100/800)),"Archivo3",100.00);
-        JPanel jpsub= crearPanel1(V,(int)(H*(400/800)),"SubDirectorio",400.00);
-        JPanel jpsub1= crearPanel1((int)(V*(100/400)),(int)(H*(400/800)),"Archivo4",100.00);
-        JPanel jpsub2= crearPanel1(V,(int)(H*(300/400)),"Archivo5",300.00);
-        jpsub.add(jpsub1,BorderLayout.CENTER,1);
-        jpsub.add(jpsub2,BorderLayout.CENTER,2);
-        jp.add(jpsub,BorderLayout.CENTER,1);
-        jp.add(jp1,BorderLayout.CENTER,2);
-        jp.add(jp2,BorderLayout.CENTER,3);
-        jp.add(jp3,BorderLayout.CENTER,4);
-        
-        
-        return jp;
-    }
-    private JPanel crearPanel1(int V, int H, String nameFile, Double weight){
-        JPanel jp= new JPanel();
-        jp.setSize(H, V);
-        jp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
-        JLabel lbl_nameFile = new JLabel(nameFile);
-        JLabel lbl_weight_File = new JLabel(Double.toString(weight)+"MB");
-        jp.add(lbl_nameFile,BorderLayout.NORTH,0);
-        jp.add(lbl_weight_File,BorderLayout.NORTH,-1);
-     return jp;   
-    }
-    */
+    private void txtA_ArchivoMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        // TODO add your handling code here:
+    } 
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlb_SC;
-    private javax.swing.JLabel lbl_nameFile;
-    private javax.swing.JLabel lbl_nameFile1;
-    private javax.swing.JLabel lbl_weight_File;
-    private javax.swing.JLabel lbl_weight_File1;
     // End of variables declaration//GEN-END:variables
 
 }

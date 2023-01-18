@@ -18,6 +18,8 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     private File file;
     private String path;
     private String name;
+    private String Tipo_Tamnio;
+    private double weight;
 
     public File getFile() {
         return file;
@@ -42,7 +44,7 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     public void setName(String name) {
         this.name = name;
     }
-    private double weight;
+    
 
     public NodeTreeMap() {
         this(null,null,null,null,0);
@@ -50,7 +52,7 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
 
     //file.length() te da el tamano en byte y vamos a presentarlo por MB
     public NodeTreeMap(File file) {
-        this(null,file,file.getPath(),file.getName(),file.length()/(1024*1024));
+        this(null,file,file.getPath(),file.getName(),file.length());
     }
     
     
@@ -60,7 +62,7 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
         this.file = file;
         this.path = path;
         this.name=name;
-        this.weight = Math.round(weight*100)/100d;
+        this.weight = tranformarByte(weight);
     }
 
     public LinkedList<TreeMap> getChildren() {
@@ -71,7 +73,20 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
         this.children = children;
     }
 
-    
+    private double tranformarByte(double bytes){
+        if(bytes<=1024000){
+            this.Tipo_Tamnio="KB";
+            return bytes/1024;
+        }
+        if(bytes<=1048576000){
+            this.Tipo_Tamnio="MB";
+            return bytes/1048576;
+        }
+            
+        this.Tipo_Tamnio="GB";
+        return bytes/1073741824;
+        
+    }
 
     
     
@@ -85,6 +100,10 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
             }
             return cont;
         }
+    }
+    
+    public String getWeightString() {
+        return Double.toString(weight)+this.Tipo_Tamnio;
     }
 
     public void setWeight(double weight) {

@@ -74,11 +74,11 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     }
 
     private double tranformarByte(double bytes){
-        if(bytes<=1024000){
+        if(bytes<= 1048576){
             this.Tipo_Tamnio="KB";
             return bytes/1024;
         }
-        if(bytes<=1048576000){
+        if(bytes<= 1073741824){
             this.Tipo_Tamnio="MB";
             return bytes/1048576;
         }
@@ -103,7 +103,7 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     }
     
     public String getWeightString() {
-        return Double.toString(weight)+this.Tipo_Tamnio;
+        return String.format("%.2f",weight)+this.Tipo_Tamnio;
     }
 
     public void setWeight(double weight) {

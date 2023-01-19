@@ -120,6 +120,7 @@ public class Buscador extends javax.swing.JFrame {
         if (respuesta == JFileChooser.APPROVE_OPTION) {
             archivoElegido = fc.getSelectedFile();
             System.out.println("Archivo elegido: " + archivoElegido.getName());
+            System.out.println("Archivo elegido: " + archivoElegido.length());
             txtA_Archivo.setText(archivoElegido.getPath());
             this.setVisible(false);
             
@@ -143,13 +144,13 @@ public class Buscador extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_selectActionPerformed
 
-    private void txtA_ArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtA_ArchivoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtA_ArchivoMouseClicked
-
     private void btn_selectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_selectMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_selectMouseClicked
+
+    private void txtA_ArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtA_ArchivoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtA_ArchivoMouseClicked
 
     public TreeMap getT() {
         return t;

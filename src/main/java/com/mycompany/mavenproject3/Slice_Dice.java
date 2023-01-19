@@ -8,17 +8,23 @@ package com.mycompany.mavenproject3;
 import TDAs.TreeMap;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Rectangle;
+import java.awt.Window;
 import java.io.IOException;
 import java.util.Stack;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -98,20 +104,22 @@ public class Slice_Dice extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btn_regresar)
-                .addGap(147, 147, 147)
+                .addGap(228, 228, 228)
                 .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(263, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_regresar)
+                .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_regresar))
-                .addContainerGap(533, Short.MAX_VALUE))
+                .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(btn_regresar)
+                .addContainerGap(436, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,7 +203,7 @@ public class Slice_Dice extends javax.swing.JFrame {
                         
                     }else{
                         JButton b =crearJButton(height, (int)(width*porc_taminio), tm2);
-                        jPrincipal.add(b);
+                        jPrincipal.add(b,3);
                         b.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 btn_selectActionPerformed(evt,tm2);
@@ -221,8 +229,8 @@ public class Slice_Dice extends javax.swing.JFrame {
 
     private JTextArea crearJTextArea(int height, int width,TreeMap tm){
         JTextArea txt_Area=new JTextArea();
-        txt_Area.setColumns(20);
-        txt_Area.setRows(5);
+        txt_Area.setColumns(10);
+        txt_Area.setRows(0);
         txt_Area.setBackground(Color.LIGHT_GRAY);
         txt_Area.setText(tm.getRoot().getName()+'\n'+tm.getRoot().getWeightString());
         txt_Area.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,7 +243,7 @@ public class Slice_Dice extends javax.swing.JFrame {
     }
     private JButton crearJButton(int height, int width,TreeMap tm){
         JButton b= new JButton();
-        b.setBackground(Color.BLUE);
+        b.setBackground(Color.CYAN);
         b.setText(tm.getRoot().getName()+"->"+tm.getRoot().getWeightString());
         //b.setBounds(0, 0, width, height);
         
@@ -245,16 +253,29 @@ public class Slice_Dice extends javax.swing.JFrame {
             
     
     private JPanel crearJPanel(int height, int width,TreeMap tm){
+        JButton stageCloseButton = new JButton("<_");
+        stageCloseButton.setBackground(Color.WHITE);
+        stageCloseButton.setBounds(0, 0, 5, 5);
+        Rectangle aa = new Rectangle(0,0,10,10);
         JPanel jp = new JPanel();
-        jp.setBackground(Color.red);
+        jp.setBackground(Color.white);
         jp.setSize(width, height);
         jp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
         JLabel lbl_nameFile= new JLabel(tm.getRoot().getName());
-        lbl_nameFile.setBounds(0,0,120, 30);
+        lbl_nameFile.setBounds(0,0,15, 15);
         JLabel lbl_weightFile= new JLabel(tm.getRoot().getWeightString());
-        lbl_weightFile.setBounds((int)tm.getWeight()-30,0,50,30);
+        lbl_weightFile.setBounds(0,0,50,30);
+        stageCloseButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            Window win = SwingUtilities.getWindowAncestor(jp);
+                            win.dispose();
+                            }
+                            });
         jp.add(lbl_nameFile, 0);
         jp.add(lbl_weightFile,1);
+        jp.add(stageCloseButton);
+        
+        stageCloseButton.setLocation(0, 0);
         return jp;
     }
     

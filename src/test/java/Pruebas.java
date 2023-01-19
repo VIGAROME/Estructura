@@ -1,5 +1,5 @@
 
-import TDAs.TreeMap;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,6 +12,8 @@ import TDAs.TreeMap;
  */
 public class Pruebas {
     public static void main(String[] args) {
-        TreeMap m= new TreeMap();
+        String s ="Estado de cuenta.xlsx";
+        char c ='\\';
+        System.out.println(s.substring(s.length()-3, s.length())+"\\");
     }
 }

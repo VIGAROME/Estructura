@@ -173,7 +173,7 @@ public class Slice_Dice extends javax.swing.JFrame {
     private void jTextArea1MouseClicked(java.awt.event.MouseEvent evt, TreeMap m) throws IOException {                                        
         
         Desktop d = Desktop.getDesktop();
-        File f= new File(map.getRoot().getPath());
+        File f= new File(map.getRoot().getPath()+"\\"+m.getRoot().getName());
         d.open(f);
     } 
     /**
@@ -272,7 +272,24 @@ public class Slice_Dice extends javax.swing.JFrame {
         JTextArea txt_Area=new JTextArea();
         txt_Area.setColumns(10);
         txt_Area.setRows(0);
-        txt_Area.setBackground(Color.LIGHT_GRAY);
+        txt_Area.setBackground(Color.LIGHT_GRAY);//Color de Defautl
+        String s =tm.getRoot().getName();
+        String type_file = s.substring(s.length()-3, s.length());
+        System.out.println(type_file);
+        if(type_file.equals("lsx")){
+            System.out.println("Ingreso lsx");
+            txt_Area.setBackground(Color.green);
+        }else if(type_file.equals("ocx")){
+            txt_Area.setBackground(Color.BLUE);
+        }else if(type_file.equals("ptm")){
+            txt_Area.setBackground(Color.RED);
+        }else if (type_file.equals("zip") || type_file.equals("rar")){
+            txt_Area.setBackground(Color.yellow);
+        }else if(type_file.equals("png") || type_file.equals("jpg")){
+            txt_Area.setBackground(Color.ORANGE);
+        }else if (type_file.equals("pdf")){
+            txt_Area.setBackground(Color.PINK);
+        }
         txt_Area.setText(tm.getRoot().getName()+'\n'+tm.getRoot().getWeightString());
         txt_Area.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

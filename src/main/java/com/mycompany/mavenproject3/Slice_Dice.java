@@ -8,12 +8,16 @@ package com.mycompany.mavenproject3;
 import TDAs.TreeMap;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Rectangle;
 import java.awt.Window;
+import java.io.File;
 import java.io.IOException;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -64,6 +68,8 @@ public class Slice_Dice extends javax.swing.JFrame {
         jFrame2 = new javax.swing.JFrame();
         jlb_SC = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -99,18 +105,32 @@ public class Slice_Dice extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextArea1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_regresar)
                 .addGap(124, 124, 124))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(228, 228, 228)
+                        .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +139,9 @@ public class Slice_Dice extends javax.swing.JFrame {
                 .addComponent(jlb_SC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addComponent(btn_regresar)
-                .addContainerGap(436, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(306, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,6 +166,16 @@ public class Slice_Dice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_regresarActionPerformed
 
+    private void jTextArea1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseClicked
+        
+    }//GEN-LAST:event_jTextArea1MouseClicked
+
+    private void jTextArea1MouseClicked(java.awt.event.MouseEvent evt, TreeMap m) throws IOException {                                        
+        
+        Desktop d = Desktop.getDesktop();
+        File f= new File(map.getRoot().getPath());
+        d.open(f);
+    } 
     /**
      * @param args the command line arguments
      */
@@ -200,6 +232,15 @@ public class Slice_Dice extends javax.swing.JFrame {
                         txtArchivo.setLocation(punteroV, 40);
                         punteroV+=(int)(width*porc_taminio);
                         jPrincipal.add(txtArchivo);
+                        txtArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+                                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                        try {
+                                            jTextArea1MouseClicked(evt,tm2);
+                                        } catch (IOException ex) {
+                                            Logger.getLogger(Slice_Dice.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                });
                         
                     }else{
                         JButton b =crearJButton(height, (int)(width*porc_taminio), tm2);
@@ -302,6 +343,8 @@ public class Slice_Dice extends javax.swing.JFrame {
     private javax.swing.JButton btn_regresar;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel jlb_SC;
     // End of variables declaration//GEN-END:variables
 

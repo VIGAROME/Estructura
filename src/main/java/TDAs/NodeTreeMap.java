@@ -21,6 +21,10 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     private String Tipo_Tamnio;
     private double weight;
 
+    public String getTipo_Tamnio() {
+        return Tipo_Tamnio;
+    }
+    
     public File getFile() {
         return file;
     }
@@ -62,7 +66,7 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
         this.file = file;
         this.path = path;
         this.name=name;
-        this.weight = tranformarByte(weight);
+        this.weight = weight;
     }
 
     public LinkedList<TreeMap> getChildren() {
@@ -89,21 +93,27 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     }
 
     
-    
     public double getWeight() {
         if(children == null){
-            return this.weight;
+            return tranformarByte(this.weight);
         }else{
-            double cont=0;
+            double cont_byte=0;
             for (TreeMap t : children){
-                cont+=t.getWeight();
+                if(t.getRoot().getTipo_Tamnio()=="KB"){
+                    cont_byte+= (t.getWeight()*1024);
+                }else if(t.getRoot().getTipo_Tamnio()=="MB"){
+                    cont_byte+= (t.getWeight()*1048576);
+            }else
+                   cont_byte+= (t.getWeight()*1073741824); 
+            
             }
-            return cont;
-        }
+            return tranformarByte(cont_byte);
+        }   
     }
     
+    
     public String getWeightString() {
-        return String.format("%.2f",weight)+this.Tipo_Tamnio;
+        return String.format("%.2f",getWeight())+this.Tipo_Tamnio;
     }
 
     public void setWeight(double weight) {

@@ -97,6 +97,11 @@ public class Slice_Dice extends javax.swing.JFrame {
 
         jlb_SC.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jlb_SC.setText("Slice&Dice");
+        jlb_SC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlb_SCMouseClicked(evt);
+            }
+        });
 
         btn_regresar.setText("Regresar");
         btn_regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +174,16 @@ public class Slice_Dice extends javax.swing.JFrame {
     private void jTextArea1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea1MouseClicked
         
     }//GEN-LAST:event_jTextArea1MouseClicked
+
+    private void jlb_SCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlb_SCMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlb_SCMouseClicked
+
+    private void jlb_SCMouseClicked(java.awt.event.MouseEvent evt, TreeMap mp) throws IOException {                                    
+        Desktop d = Desktop.getDesktop();
+        File f= new File(map.getRoot().getPath());
+        d.open(f);
+    }                                   
 
     private void jTextArea1MouseClicked(java.awt.event.MouseEvent evt, TreeMap m) throws IOException {                                        
         
@@ -323,6 +338,16 @@ public class Slice_Dice extends javax.swing.JFrame {
         lbl_nameFile.setBounds(0,0,15, 15);
         JLabel lbl_weightFile= new JLabel(tm.getRoot().getWeightString());
         lbl_weightFile.setBounds(0,0,50,30);
+        lbl_nameFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                try {
+                    jlb_SCMouseClicked(evt, tm);
+                } catch (IOException ex) {
+                    Logger.getLogger(Slice_Dice.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
         stageCloseButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                             Window win = SwingUtilities.getWindowAncestor(jp);

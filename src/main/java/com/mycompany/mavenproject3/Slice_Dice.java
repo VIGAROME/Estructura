@@ -281,7 +281,7 @@ public class Slice_Dice extends javax.swing.JFrame {
                             
                         }else if (porc_taminio > 0.50){
                             
-                            Dimension dim = new Dimension(160,160);
+                            Dimension dim = new Dimension(180,160);
                             b.setPreferredSize(dim);
                         }else if (porc_taminio > 0.25){
                             

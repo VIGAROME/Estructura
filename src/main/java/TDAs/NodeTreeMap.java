@@ -19,7 +19,7 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     private String path;
     private String name;
     private String Tipo_Tamnio;
-    private double weight;
+    private long weight;
 
     public String getTipo_Tamnio() {
         return Tipo_Tamnio;
@@ -61,7 +61,7 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
     
     
     
-    public NodeTreeMap(LinkedList<TreeMap> children,File file ,String path,String name, double weight) {
+    public NodeTreeMap(LinkedList<TreeMap> children,File file ,String path,String name, long weight) {
         this.children = children;
         this.file = file;
         this.path = path;
@@ -77,46 +77,44 @@ public class NodeTreeMap implements Comparable<NodeTreeMap> {
         this.children = children;
     }
 
-    private double tranformarByte(double bytes){
-        if(bytes<= 1048576){
+    public double getTranformarByte(){
+        if(this.weight<= 1048576){
             this.Tipo_Tamnio="KB";
-            return bytes/1024;
+            return this.weight/1024;
         }
-        if(bytes<= 1073741824){
+        if(this.weight<= 1073741824){
             this.Tipo_Tamnio="MB";
-            return bytes/1048576;
+            return this.weight/1048576;
         }
             
         this.Tipo_Tamnio="GB";
-        return bytes/1073741824;
+        return this.weight/1073741824;
         
     }
 
     
     public double getWeight() {
-        if(children == null){
-            return tranformarByte(this.weight);
-        }else{
-            double cont_byte=0;
-            for (TreeMap t : children){
-                if(t.getRoot().getTipo_Tamnio()=="KB"){
-                    cont_byte+= (t.getWeight()*1024);
-                }else if(t.getRoot().getTipo_Tamnio()=="MB"){
-                    cont_byte+= (t.getWeight()*1048576);
-            }else
-                   cont_byte+= (t.getWeight()*1073741824); 
-            
-            }
-            return tranformarByte(cont_byte);
-        }   
+        return weight;
     }
     
     
     public String getWeightString() {
-        return String.format("%.2f",getWeight())+this.Tipo_Tamnio;
+        double transformado;
+        if(this.weight<= 1048576){
+            this.Tipo_Tamnio="KB";
+            transformado = this.weight/1024;
+        }
+        else if(this.weight<= 1073741824){
+            this.Tipo_Tamnio="MB";
+            transformado = this.weight/1048576;
+        }else{
+            this.Tipo_Tamnio="GB";
+            transformado = this.weight/1073741824;
+        }
+        return String.format("%.2f",transformado)+this.Tipo_Tamnio;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(long weight) {
         this.weight = weight;
     }
     public boolean addChildren(TreeMap fiel){

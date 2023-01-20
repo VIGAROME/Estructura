@@ -327,7 +327,7 @@ public class Slice_Dice extends javax.swing.JFrame {
             System.out.println("Ingreso lsx");
             txt_Area.setBackground(Color.green);
         }else if(type_file.equals("ocx")){
-            txt_Area.setBackground(Color.BLUE);
+            txt_Area.setBackground(new Color(102, 153, 250));
         }else if(type_file.equals("ptm")){
             txt_Area.setBackground(Color.RED);
         }else if (type_file.equals("zip") || type_file.equals("rar")){

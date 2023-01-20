@@ -9,6 +9,7 @@ import TDAs.TreeMap;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Rectangle;
@@ -259,14 +260,23 @@ public class Slice_Dice extends javax.swing.JFrame {
                     }else{
                         JButton b =crearJButton(height, (int)(width*porc_taminio), tm2);
                         if (porc_taminio > 0.75){
-                            b.setSize(40,10);
                             
-                        }if (porc_taminio > 0.50){
-                            b.setSize(10,10);
-                        }if (porc_taminio > 0.25){
-                            b.setSize(10,10);
+                            Dimension dim = new Dimension(320,320);
+                            b.setPreferredSize(dim);
+                            
+                        }else if (porc_taminio > 0.50){
+                            
+                            Dimension dim = new Dimension(160,160);
+                            b.setPreferredSize(dim);
+                        }else if (porc_taminio > 0.25){
+                            
+                            Dimension dim = new Dimension(180,80);
+                            b.setPreferredSize(dim);
                         }
+                        
                         jPrincipal.add(b,3);
+                       
+                        
                         b.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 btn_selectActionPerformed(evt,tm2);

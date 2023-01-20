@@ -221,16 +221,30 @@ public class Slice_Dice extends javax.swing.JFrame {
                 for(TreeMap tm: map.getChildren()){
                     s.push(tm);
                 }
+                double porc_taminio;
                 int punteroV=0;
                 int punteroH=40;
                 while (!s.isEmpty()) {
                     JPanel jsub=null;
-                    TreeMap tm2=s.pop();
-                    double porc_taminio= tm2.getWeight()/tamnio_totalMb;
+                    TreeMap tm2 = s.pop();
+                    porc_taminio= tm2.getWeight()/tamnio_totalMb;
                     if (tm2.isFile()){
                         JTextArea txtArchivo= crearJTextArea(height,(int)(width*porc_taminio), tm2);
                         txtArchivo.setLocation(punteroV, 40);
                         punteroV+=(int)(width*porc_taminio);
+                        if (porc_taminio > 0.75){
+                            txtArchivo.setRows(20);
+                            txtArchivo.setColumns(20);
+                        }else if (porc_taminio > 0.50){
+                            txtArchivo.setRows(10);
+                            txtArchivo.setColumns(20);
+                        }else if (porc_taminio > 0.25){
+                            txtArchivo.setRows(10);
+                            txtArchivo.setColumns(10);
+                        }else{
+                            txtArchivo.setRows(5);
+                            txtArchivo.setColumns(5);
+                        }
                         jPrincipal.add(txtArchivo);
                         txtArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
                                     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -244,6 +258,14 @@ public class Slice_Dice extends javax.swing.JFrame {
                         
                     }else{
                         JButton b =crearJButton(height, (int)(width*porc_taminio), tm2);
+                        if (porc_taminio > 0.75){
+                            b.setSize(40,10);
+                            
+                        }if (porc_taminio > 0.50){
+                            b.setSize(10,10);
+                        }if (porc_taminio > 0.25){
+                            b.setSize(10,10);
+                        }
                         jPrincipal.add(b,3);
                         b.addActionListener(new java.awt.event.ActionListener() {
                             public void actionPerformed(java.awt.event.ActionEvent evt) {
